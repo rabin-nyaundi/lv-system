@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans|Arbutus+Slab|Kameron|Taviraj:400,500|Trirong&display=swap');
 html,
 body {
     height: 100%;
+    font-weight: 600;
+    font-size: small;
+    font-family: 'Trirong', serif;
 }
 
 .wrap {
@@ -112,4 +116,65 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+
+
+#login-form{
+    margin:0 auto;
+    padding: 20px;
+    padding-top: 50px;
+    text-align: left;
+    border: 1px solid lightblue;
+    font-family: 'Open Sans', sans-serif;
+}
+.logintitle{
+    margin:0 auto;
+    text-align: center;
+}
+.logo{
+    height: 40px;
+}
+.logologin{
+    height: 60px;
+}
+.mynavbar{
+    background-color:rgb(0, 0, 0);
+    padding: 3px;
+    width: 96%;
+    margin: 0 auto;
+}
+.logincol{
+    margin: 0 auto;
+}
+.center_div{
+    margin:3 0 auto;
+    padding:30px;
+    
+}.btn{
+    margin: 0 auto;
+}.logoimage{
+    align-content: center;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 40px;
+}.btnlogindiv{
+    background-color: cyan;
+}
+.usersformcol{
+    margin-left: 70px;
+}
+
+.contractdetails{
+    padding: 7px;
+}
+
+.container-update{
+    padding: 20px;
+    margin: 0px auto;
+}
+.requiredfield{
+    color: red;
+}.col-md-3 label{
+    margin: 0 50px auto;
 }

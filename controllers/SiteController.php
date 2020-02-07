@@ -71,13 +71,15 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        Yii::$app->session->destroy();
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect(['index']);
         }
 
         $model->password = '';

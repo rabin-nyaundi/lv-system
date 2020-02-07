@@ -65,6 +65,7 @@ class UsersController extends Controller
     public function actionCreate()
     {
         $model = new Users();
+        $model->user_pswd = sha1($model->user_pswd);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

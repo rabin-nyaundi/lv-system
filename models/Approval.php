@@ -66,7 +66,7 @@ class Approval extends \yii\db\ActiveRecord
      */
     public function getApprovalLeave()
     {
-        return $this->hasOne(LvLeave::className(), ['lv_leave_id' => 'approval_leave_id']);
+        return $this->hasOne(Leave::className(), ['lv_leave_id' => 'approval_leave_id']);
     }
 
     /**
@@ -76,6 +76,6 @@ class Approval extends \yii\db\ActiveRecord
      */
     public function getApprovalUser()
     {
-        return $this->hasOne(LvUsers::className(), ['id' => 'approval_user_id']);
+        return $this->hasOne(Users::className(), ['id' => 'approval_user_id']);
     }
 }

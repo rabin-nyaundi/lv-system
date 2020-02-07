@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+
 use Yii;
+use yii\base\Security;
 
 /**
  * This is the model class for table "lv_users".
@@ -17,12 +19,12 @@ use Yii;
  * @property int $department
  * @property int $user_type
  *
- * @property LvApproval[] $lvApprovals
- * @property LvLeave[] $lvLeaves
- * @property LvDepartment $department0
- * @property LeaveUserType $userType
+ * @property Approval[] $lvApprovals
+ * @property Leave[] $lvLeaves
+ * @property Department $department0
+ * @property UserType $userType
  */
-class Users extends \yii\db\ActiveRecord
+class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -54,12 +56,12 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'emp_no' => 'Emp No',
-            'user_fname' => 'User Fname',
-            'user_lname' => 'User Lname',
-            'user_email' => 'User Email',
-            'user_pswd' => 'User Pswd',
-            'user_phone' => 'User Phone',
+            'emp_no' => 'Employee No.',
+            'user_fname' => 'Firstname',
+            'user_lname' => 'Lastname',
+            'user_email' => 'Email',
+            'user_pswd' => 'Password',
+            'user_phone' => 'Phone',
             'department' => 'Department',
             'user_type' => 'User Type',
         ];
@@ -103,5 +105,76 @@ class Users extends \yii\db\ActiveRecord
     public function getUserType()
     {
         return $this->hasOne(UserType::className(), ['id' => 'user_type']);
+    }
+
+    // login identity interface
+
+    public function getAuthKey()
+    {
+        // return $this->authKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthKey($authKey)
+    {
+        // return $this->authKey === $authKey;
+    }
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return $this->user_pswd === $password;
+    }
+
+    public static function findIdentity($id)
+    {
+        // return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // foreach (self::$users as $user) {
+        //     if ($user['accessToken'] === $token) {
+        //         return new static($user);
+        //     }
+        // }
+
+        return null;
+    }
+
+    /**
+     * Finds user by email
+     *
+     * @param string $user_email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['user_email' => $email]);
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password_hash = Security::generatePasswordHash($password);
     }
 }
