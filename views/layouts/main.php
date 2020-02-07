@@ -83,7 +83,7 @@ if (!isset($_SESSION['userid'])) {
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><?=Yii::$app->session['useremail'];?></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?=Url::toRoute('site/logout')?>"><b>Logout</b></a>
+                <button class="btn btn-secondary btnlogout" type="button"><a class="dropdown-item" href="<?=Url::toRoute('site/logout')?>"><b>Logout</b></a></button>
               </div>
             </li>
           </ul>

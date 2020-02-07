@@ -56,5 +56,8 @@ body {
     height: 2em;
     align-content: center;
     margin: auto;
+  }.btnlogout{
+    margin: auto;
+    padding: 200px;;
   }
 }
