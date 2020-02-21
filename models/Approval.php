@@ -50,12 +50,12 @@ class Approval extends \yii\db\ActiveRecord
     {
         return [
             'approval_id' => 'Approval ID',
-            'approval_user_id' => 'Approval User ID',
-            'approval_leave_id' => 'Approval Leave ID',
-            'approver_id' => 'Approver ID',
-            'approval_date' => 'Approval Date',
+            'approval_user_id' => 'User',
+            'approval_leave_id' => 'Leave ID',
+            'approver_id' => 'Approver',
+            'approval_date' => 'Date approved',
             'Remarks' => 'Remarks',
-            'approval_status' => 'Approval Status',
+            'approval_status' => 'Status',
         ];
     }
 

@@ -12,11 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="approval-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Approval', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <h4><?= Html::encode($this->title) ?></h4>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -27,12 +23,36 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'approval_id',
-            'approval_user_id',
+            // 'approval_user_id',
             'approval_leave_id',
-            'approver_id',
+            // 'approver_id',
+            [
+                'attribute'=> 'approver_id',
+                'value'=> function($model)
+                {
+                    if(!empty($model->approver_id))
+                    {
+                        return \app\models\Users::findOne($model->approver_id)->user_lname;
+                    }
+                }
+            ],
             'approval_date',
             //'Remarks:ntext',
-            //'approval_status',
+            // 'approval_status',
+            [
+                'attribute' => 'approval_status',
+                'filter' => [1 => 'Awaiting approval', 2 => 'Approved', 3 => 'Rejected'],
+                'value' => function ($model) {
+                    switch ($model->approval_status) {
+                    case 3:'Rejected';
+                        break;
+                        case2:'Approved';
+                        break;
+                    default:
+                        return 'Awaiting approval';
+                    }
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

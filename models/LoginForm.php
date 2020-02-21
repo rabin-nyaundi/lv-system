@@ -63,6 +63,7 @@ class LoginForm extends Model
                 $session = Yii::$app->session;
                 $session->set('userid',$this->getUser($this->email,'id')->id);
                 $session->set('username',$this->getUser($this->email,'user_fname')->user_fname);
+                $session->set('lname',$this->getUser($this->email,'user_lname')->user_lname);
                 $session->set('useremail',$this->getUser($this->email,'user_email')->user_email);
                 $session->set('usertype',$this->getUser($this->email,'user_type')->user_type);
                 return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);

@@ -6,12 +6,12 @@ use yii\helpers\Html;
 /* @var $model app\models\Leave */
 
 $this->title = 'Create Leave';
-$this->params['breadcrumbs'][] = ['label' => 'Leaves', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+// $this->params['breadcrumbs'][] = ['label' => 'Leaves', 'url' => ['index']];
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="leave-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <?= $this->render('_form', [
         'model' => $model,

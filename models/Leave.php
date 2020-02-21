@@ -37,7 +37,7 @@ class Leave extends \yii\db\ActiveRecord
             [['leave_user_id', 'leave_subject', 'lv_status'], 'required'],
             [['leave_user_id', 'lv_status'], 'integer'],
             [['leave_subject'], 'string'],
-            [['lv_date_raised', 'lv_start_date', 'lv_end_date'], 'safe'],
+            [['lv_date_raised', 'lv_start_date', 'lv_end_date'], 'string', 'max' => 50],
             [['leave_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['leave_user_id' => 'id']],
         ];
     }
@@ -48,13 +48,13 @@ class Leave extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'lv_leave_id' => 'Lv Leave ID',
-            'leave_user_id' => 'Leave User ID',
+            'lv_leave_id' => 'Leave ID',
+            'leave_user_id' => 'User',
             'leave_subject' => 'Leave Subject',
-            'lv_date_raised' => 'Lv Date Raised',
-            'lv_start_date' => 'Lv Start Date',
-            'lv_end_date' => 'Lv End Date',
-            'lv_status' => 'Lv Status',
+            'lv_date_raised' => 'Date Raised',
+            'lv_start_date' => 'Start Date',
+            'lv_end_date' => 'End Date',
+            'lv_status' => 'Status',
         ];
     }
 
@@ -65,7 +65,7 @@ class Leave extends \yii\db\ActiveRecord
      */
     public function getLvApprovals()
     {
-        return $this->hasMany(LvApproval::className(), ['approval_leave_id' => 'lv_leave_id']);
+        return $this->hasMany(Approval::className(), ['approval_leave_id' => 'lv_leave_id']);
     }
 
     /**
@@ -75,6 +75,6 @@ class Leave extends \yii\db\ActiveRecord
      */
     public function getLeaveUser()
     {
-        return $this->hasOne(LvUsers::className(), ['id' => 'leave_user_id']);
+        return $this->hasOne(Users::className(), ['id' => 'leave_user_id']);
     }
 }

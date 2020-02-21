@@ -2,9 +2,9 @@
 html,
 body {
     height: 100%;
-    font-weight: 600;
+    font-weight: 500;
     font-size: small;
-    font-family: 'Trirong', serif;
+    /* font-family: 'Trirong', serif; */
 }
 
 .wrap {
@@ -177,4 +177,7 @@ a.desc:after {
     color: red;
 }.col-md-3 label{
     margin: 0 50px auto;
+}
+.container-fluid{
+    font-size: small;
 }

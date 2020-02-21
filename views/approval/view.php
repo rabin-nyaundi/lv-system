@@ -32,10 +32,34 @@ $this->params['breadcrumbs'][] = $this->title;
             'approval_id',
             'approval_user_id',
             'approval_leave_id',
-            'approver_id',
+            [
+                'attribute'=> 'approver_id',
+                'value'=> function($model)
+                {
+                    if(!empty($model->approver_id))
+                    {
+                        return \app\models\Users::findOne($model->approver_id)->user_lname;
+                    }
+                }
+            ],
+            // 'approver_id',
             'approval_date',
             'Remarks:ntext',
-            'approval_status',
+            // 'approval_status',
+            [
+                'attribute' => 'approval_status',
+                'filter' => [1 => 'Awaiting approval', 2 => 'Approved', 3 => 'Rejected'],
+                'value' => function ($model) {
+                    switch ($model->approval_status) {
+                    case 3:'Rejected';
+                        break;
+                        case2:'Approved';
+                        break;
+                    default:
+                        return 'Awaiting approval';
+                    }
+                },
+            ],
         ],
     ]) ?>
 

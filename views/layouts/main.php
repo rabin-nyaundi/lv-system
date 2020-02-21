@@ -49,8 +49,8 @@ if (!isset($_SESSION['userid'])) {
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><?php echo Html::img('@web/images/logo.png',['class'=> 'logo']) ?></div>
       <div class="list-group list-group-flush">
-        <a href ="<?=Url::toRoute('users/index')?>"class="list-group-item list-group-item-action bg-light">Leave</a>
-        <a href="<?=Url::toRoute('approval/index')?>" class="list-group-item list-group-item-action bg-light">Approvals</a>
+        <a href ="<?=Url::toRoute('leave/index')?>"class="list-group-item list-group-item-action bg-light">Leave Application</a>
+        <a href="<?=Url::toRoute('approval/index')?>" class="list-group-item list-group-item-action bg-light">Leave Approvals</a>
         <a href="<?=Url::toRoute('users/index')?>" class="list-group-item list-group-item-action bg-light">Leave Days</a>
         <a href="<?=Url::toRoute('users/index')?>" class="list-group-item list-group-item-action bg-light">Profile</a>
       </div>
