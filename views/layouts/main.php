@@ -35,10 +35,10 @@ if (!isset($_SESSION['userid'])) {
 
 <br />
     <h2>
-        <div class="text text-danger text-center"> Please login to access this page
+        <div class="text text-primary text-center"> Please login to access this page
     </h2>
     </div><br />
-    <div class="text-center"><a class="btn btn-primary btn-background"
+    <div class="text-center"><a class="btn btn-danger btn-background"
             href="<?php echo Url::toRoute('site/login'); ?>">Login</a></div>;
             <?php
 } else {
@@ -49,8 +49,8 @@ if (!isset($_SESSION['userid'])) {
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><?php echo Html::img('@web/images/logo.png',['class'=> 'logo']) ?></div>
       <div class="list-group list-group-flush">
-        <a href ="<?=Url::toRoute('leave/index')?>"class="list-group-item list-group-item-action bg-light">Leave Application</a>
-        <a href="<?=Url::toRoute('approval/index')?>" class="list-group-item list-group-item-action bg-light">Leave Approvals</a>
+        <a href ="<?=Url::toRoute('leave/index')?>"class="list-group-item list-group-item-action bg-light">Leave </a>
+        <a href="<?=Url::toRoute('approval/index')?>" class="list-group-item list-group-item-action bg-light">Approvals</a>
         <a href="<?=Url::toRoute('users/index')?>" class="list-group-item list-group-item-action bg-light">Leave Days</a>
         <a href="<?=Url::toRoute('users/index')?>" class="list-group-item list-group-item-action bg-light">Profile</a>
       </div>
